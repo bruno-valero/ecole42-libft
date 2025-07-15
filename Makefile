@@ -27,7 +27,10 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
-	echo $<, $@ && $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clear:
 	rm -rf *.o
+
+fclear: clear
+	rm -rf $(NAME)

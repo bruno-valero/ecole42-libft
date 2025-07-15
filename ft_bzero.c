@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/14 14:34:37 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:03:01 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_bzero(void *s, size_t n)
 {
 	char			number;
-	int				i;
+	size_t			i;
 	unsigned char	*ptr;
 
 	number = '\0';
