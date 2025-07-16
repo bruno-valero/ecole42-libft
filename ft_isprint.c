@@ -6,11 +6,11 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/14 07:35:50 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:06:10 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
-	return ((c >= 0 && c <= 31) || c == 127);
+	return (!((c >= 0 && c <= 31) || c == 127));
 }

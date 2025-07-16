@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/15 14:20:29 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:01:34 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	big_i;
-	int		ltt_i;
+	int		size;
+	char	*sub;
 
-	if (!ft_strlen((char *)little))
-		return ((char *)big);
-	big_i = -1;
-	while (big[++big_i])
-	{
-		ltt_i = 0;
-		if (big[big_i] == little[0])
-		{
-			while ((little[ltt_i] && big[big_i] == little[ltt_i])
-				&& big_i + 1 <= len)
-				ltt_i++;
-		}
-		if (little[ltt_i] == '\0')
-			return ((char *)&big[big_i]);
-	}
-	return ((void *)0);
+	if (start == len || !(s[start]))
+		return (((void *)0));
+	size = len - (size_t)start;
+	sub = (char *)malloc(size + 1);
+	ft_bzero(sub, size + 1);
+	while (start < len)
+		sub[start++] = s[start];
+	return (sub);
 }
