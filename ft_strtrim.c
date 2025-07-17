@@ -6,12 +6,12 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/16 19:40:31 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:01:38 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 int		identify_chars(char const *s1, char const *set, int start_from_end);
 void	identify_chars_add(int start_from_end, int *i_ex);
@@ -91,7 +91,7 @@ void	handle_find_char(int *found_total, int *found_one)
 	(*found_one) = 1;
 }
 
-int main()
-{
-	printf("strtrim:%s", ft_strtrim("@ teste&* s@* d ###!!", "@ &*$#!"));
-}
+// int main()
+// {
+// 	printf("strtrim:%s", ft_strtrim("@ teste&* s@* d ###!!", "@ &*$#!"));
+// }
