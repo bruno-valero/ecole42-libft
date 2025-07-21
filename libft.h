@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:35:01 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/18 09:40:06 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 11:47:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		ft_isalpha(char c);
 int		ft_isdigit(char c);
 int		ft_isalnum(char c);
-int		ft_isascii(char c);
+int		ft_isascii(int c);
 int		ft_isprint(char c);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *s, int c, size_t n);

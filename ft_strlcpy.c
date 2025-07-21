@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/15 14:06:51 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:19:42 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,26 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	total_bytes;
-	int	i;
+	size_t	i;
 
-	return ((size_t)ft_strlen((char *)src));
-	total_bytes = size - 1;
+	if (!size)
+		return ((size_t)ft_strlen((char *)src));
 	i = -1;
-	while (++i <= total_bytes)
+	while (++i < size - 1 && src[i])
 		dst[i] = src[i];
 	dst[i] = '\0';
-	return ((size_t)ft_strlen((char *)src));
+	return ((size_t)ft_strlen(src));
 }
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <limits.h>
+// int main()
+// {
+// 	char src[] = "coucou";
+// 	char dest[10]; memset(dest, 'A', 10);
+// 	int teste = INT_MAX;
+// 	printf("%d\n", ft_strlcpy(dest, src, -1) == strlen(src));
+// 	// printf("%d\n", teste++);
+// 	// printf("%d\n", teste);
+// }

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/18 18:17:55 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:10:39 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ int	ft_atoi(const char *nptr)
 	handle_signs(&nptr, &sign);
 	result = 0;
 	i = -1;
-	while (nptr[++i])
-	{
-		if (!ft_isdigit(nptr[i]))
-			break ;
+	while (ft_isdigit(nptr[++i]))
 		result = result * 10 + (nptr[i] - '0');
-	}
 	return (result * sign);
 }
 
@@ -43,13 +39,12 @@ void	clear_useless(const char **nptr)
 void	handle_signs(const char **nptr, int *sign)
 {
 	*sign = 1;
-	if (*nptr[0] == '-')
+	if (*nptr[0] == '-' || *nptr[0] == '+')
 	{
-		*sign = -1;
+		if (*nptr[0] == '-')
+			*sign = -1;
 		*nptr = *nptr + 1;
 	}
-	if (*nptr[0] == '+')
-		*nptr = *nptr + 1;
 }
 
 // #include <stdio.h>

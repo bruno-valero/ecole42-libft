@@ -40,10 +40,10 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-print:
-
 clean:
 	rm -rf *.o
 
 fclean: clean
 	rm -rf $(NAME)
+
+re: fclean all

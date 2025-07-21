@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/18 14:26:10 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:50:49 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (!ft_strlen(little))
 		return ((char *)big);
 	big_i = -1;
-	while (big[++big_i])
+	while (big[++big_i] && big_i < len)
 	{
 		ltt_i = 0;
 		if (big[big_i] == little[0])
 		{
-			while ((little[ltt_i] && big[big_i] == little[ltt_i])
-				&& big_i + 1 <= len)
+			while ((little[ltt_i] && big[big_i + ltt_i] == little[ltt_i])
+				&& big_i + ltt_i < len)
 				ltt_i++;
 		}
 		if (little[ltt_i] == '\0')
@@ -34,3 +34,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return ((void *)0);
 }
+
+// #include <stdio.h>
+// #include <bsd/string.h>
+// int main()
+// {
+// 	char haystack[30] = "aaabcabcd";
+// 	char needle[10] = "aabc";
+// 	printf("ft_strnstr: %s\n", ft_strnstr(haystack, needle, -1));
+// 	printf("strnstr: %s\n", strnstr(haystack, needle, -1));
+// }
