@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/18 08:51:48 by brunofer         ###   ########.fr       */
+/*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
+/*   Updated: 2025/07/18 08:38:35 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	
 }
+
+// #include <stdio.h>
+// int main ()
+// {
+// 	// printf("%d", nbrlen(13000));
+// 	printf("%s", ft_strmapi(-1587));
+// }

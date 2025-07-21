@@ -6,13 +6,13 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/14 15:46:46 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:03:47 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if (c >= 97 && c <= 122)
-		return (c);
-	return (c + 32);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }

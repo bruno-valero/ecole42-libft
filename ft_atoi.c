@@ -6,18 +6,14 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/16 08:30:05 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:17:55 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
-// #include <limits.h>
 
-// int	ft_isdigit(char c)
-// {
-// 	return (c >= '0' && c <= '9');
-// }
+void	clear_useless(const char **nptr);
+void	handle_signs(const char **nptr, int *sign);
 
 int	ft_atoi(const char *nptr)
 {
@@ -25,28 +21,42 @@ int	ft_atoi(const char *nptr)
 	int	i;
 	int	sign;
 
-	while (*nptr == ' ')
-		nptr++;
-	sign = 1;
-	if (nptr[0] == '-')
-	{
-		sign = -1;
-		nptr++;
-	}
+	clear_useless(&nptr);
+	handle_signs(&nptr, &sign);
 	result = 0;
 	i = -1;
 	while (nptr[++i])
 	{
 		if (!ft_isdigit(nptr[i]))
-			return (result * sign);
+			break ;
 		result = result * 10 + (nptr[i] - '0');
 	}
 	return (result * sign);
 }
 
+void	clear_useless(const char **nptr)
+{
+	while ((**nptr == ' ' || **nptr > 1) && **nptr < 31)
+		*nptr = *nptr + 1;
+}
+
+void	handle_signs(const char **nptr, int *sign)
+{
+	*sign = 1;
+	if (*nptr[0] == '-')
+	{
+		*sign = -1;
+		*nptr = *nptr + 1;
+	}
+	if (*nptr[0] == '+')
+		*nptr = *nptr + 1;
+}
+
+// #include <stdio.h>
+// #include <limits.h>
+
 // int	main(void)
 // {
-// 	printf("ft_atoi: %d\n", ft_atoi("        -2147483649"));
-// 	printf("atoi: %d\n", atoi("        -2147483649"));
-// 	printf("int: %d\n", (INT_MAX));
+// 	printf("ft_atoi: %d\n", ft_atoi("        +214"));
+// 	printf("atoi: %d\n", atoi("        +214"));
 // }

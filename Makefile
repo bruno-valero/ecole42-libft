@@ -1,6 +1,6 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 FUNCTIONS = ft_isalpha.c \
 			ft_isdigit.c \
 			ft_isalnum.c \
@@ -21,7 +21,14 @@ FUNCTIONS = ft_isalpha.c \
 			ft_atoi.c \
 			ft_strdup.c \
 			ft_substr.c \
-			ft_strjoin.c
+			ft_strjoin.c \
+			ft_itoa.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_tolower.c \
+			ft_calloc.c \
+			ft_strtrim.c \
+			ft_split.c
 
 OBJ := $(FUNCTIONS:%.c=%.o)
 
@@ -35,8 +42,8 @@ $(NAME): $(OBJ)
 
 print:
 
-clear:
+clean:
 	rm -rf *.o
 
-fclear: clear
+fclean: clean
 	rm -rf $(NAME)

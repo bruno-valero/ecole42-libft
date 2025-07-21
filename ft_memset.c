@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/16 12:03:00 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 07:05:07 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-#include <stdio.h>
-int main()
-{
-	int number = 8;
-	int *ptr = &number;
-	void *outro_ptr;
-	outro_ptr = (void *)ptr;
-	printf("inteiro = %d\nponteiro = %p\noutro ponteiro = %p", number, ptr, outro_ptr);
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	int number = 8;
+// 	int *ptr = &number;
+// 	void *outro_ptr;
+// 	outro_ptr = (void *)ptr;
+// 	printf("inteiro = %d\nponteiro = %p\noutro ponteiro = %p", number, ptr, outro_ptr);
+// }

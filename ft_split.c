@@ -6,12 +6,12 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/17 19:49:21 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 10:19:08 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 char	**create_array(char const *s, int	*data, int data_len);
 
@@ -26,11 +26,13 @@ char	**ft_split(char const *s, char c)
 	i = -1;
 	while (s[++i])
 	{
-		if ((i > 0) && (s[i] != c) && (s[i - 1] == c))
+		if ((i == 0) && (s[i] != c))
 			data[data_count++] = i;
-		else if ((i > 0) && (s[i] == c) && (s[i - 1] != c))
+		else if ((i > 0) && (s[i] != c) && (s[i - 1] == c))
+			data[data_count++] = i;
+		else if ((i > 0) && (s[i] == c && s[i - 1] != c))
 			data[data_count++] = i - 1;
-		else if ((i == 0) && (s[i] != c))
+		else if ((s[i] != c && s[i + 1] == '\0'))
 			data[data_count++] = i;
 	}
 	return (create_array(s, data, data_count));
@@ -52,8 +54,10 @@ char	**create_array(char const *s, int	*data, int data_len)
 		i_arr = 0;
 		while (i_in <= data[i_ex * 2 + 1])
 			array[i_ex][i_arr++] = s[i_in++];
+		array[i_ex][i_arr] = '\0';
 	}
-	array[i_ex] = "\0";
+	free(data);
+	array[i_ex] = (void *)0;
 	return (array);
 }
 
@@ -61,6 +65,12 @@ char	**create_array(char const *s, int	*data, int data_len)
 // int main ()
 // {
 // 	// ft_split("Ola tudo bem? ", ' ');
-// 	printf("%s", ft_split("Ola tudo bem? ", ' ')[3]);
+// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[0]);
+// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[1]);
+// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[2]);
+// 	// printf("%s\n\n", ft_split("Ola tudo bem? ", ' ')[3]);
+// 	// 
+// 	// printf("%d\n", ft_split("  tripouille  42  ", ' ')[2] == NULL);
+// 	printf("%d\n", ft_split("tripouille", 0)[1] == NULL);
+// 	printf("%c\n", ft_split("tripouille", 0)[0][0]);
 // }
-// 

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/14 16:36:46 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:11:12 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ char	*ft_strrchr(const char *s, int c)
 	int	last_position;
 	int	i;
 
+	c = c % 256;
 	last_position = -1;
 	i = -1;
 	while (s[++i])

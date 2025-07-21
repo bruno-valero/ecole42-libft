@@ -6,12 +6,13 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/15 14:09:34 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:10:38 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
+	c = c % 256;
 	while (*s)
 	{
 		if (*s == c)
