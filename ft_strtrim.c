@@ -6,21 +6,16 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/21 21:13:09 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 09:06:06 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* 
-
-	ESSSA IMPLEMENTACAO ESTA ERRADA PORQUE ESTOU FAZENDO COMO SE FOSSE UM SPLIT, 
-	MAS ESTA TRIM DEVE APENAS RETIRAR OPS CARACTERES DO INICIO E FINAL DA PAAVRA E NAO DO MEIO
-
- */
-
 int		is_valid_char(char c, char const *set);
 void	get_coordinates(char const *s1, char const *set, int data[2]);
+int		is_valid_coords(int *coords);
+char	*empty(void);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -28,31 +23,46 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		data[2];
 	char	*str;
 
+	if (!ft_strlen(s1))
+		return (empty());
 	get_coordinates(s1, set, data);
+	if (!is_valid_coords(data))
+		return (empty());
 	str = malloc(data[1] - data[0] + 2);
+	if (!str)
+		return ((void *)0);
 	i = 0;
 	while (data[0] <= data[1])
 		str[i++] = s1[data[0]++];
+	str[i] = '\0';
 	return (str);
 }
 
 void	get_coordinates(char const *s1, char const *set, int data[2])
 {
-	int	len_data;
 	int	i;
 
-	len_data = 0;
+	data[0] = -1;
+	data[1] = -1;
 	i = -1;
 	while (s1[++i])
 	{
 		if (!i && is_valid_char(s1[i], set))
-			data[len_data++] = i;
-		if (is_valid_char(s1[i - 1], set) && !is_valid_char(s1[i], set))
-			data[len_data++] = i;
+			data[0] = i;
 		if (!is_valid_char(s1[i - 1], set) && is_valid_char(s1[i], set))
-			data[len_data++] = i;
+			data[0] = i;
+		if (data[0] >= 0)
+			break ;
+	}
+	i = ft_strlen(s1);
+	while (s1[--i])
+	{
 		if (is_valid_char(s1[i], set) && !s1[i + 1])
-			data[len_data++] = i;
+			data[1] = i;
+		if (is_valid_char(s1[i], set) && !is_valid_char(s1[i + 1], set))
+			data[1] = i;
+		if (data[1] >= 0)
+			break ;
 	}
 }
 
@@ -67,8 +77,25 @@ int	is_valid_char(char c, char const *set)
 	return (1);
 }
 
-#include <stdio.h>
-int main()
+int	is_valid_coords(int *coords)
 {
-	printf("strtrim:%s", ft_strtrim("@ teste&* s@* d ###!!", "@ &*$#!"));
+	if (coords[0] < 0 || coords[1] < 0)
+		return (0);
+	return (1);
 }
+
+char	*empty(void)
+{
+	char	*str;
+
+	str = malloc(1);
+	str[0] = '\0';
+	return (str);
+}
+
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("strtrim:%s", ft_strtrim("   xxx   xxx", " x"));
+// 	// printf("strtrim:%s", ft_strtrim("abcdba", "acb"));
+// }
