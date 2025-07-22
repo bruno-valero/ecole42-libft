@@ -12,56 +12,49 @@
 
 #include "libft.h"
 
-int		nbrlen(int n);
-void	strreverse(char *str);
-void	handle_negative(int *is_negative, int *n);
+static int		nbrlen(long int nbr, int is_negative);
+static void		strreverse(char *str);
+static void		change_number(int is_negative, long int nbr, char *str_nbr);
+static void		handle_negative(int *is_negative, long int *nbr);
 
 char	*ft_itoa(int n)
 {
-	int		i;
-	int		temp;
-	int		is_negative;
-	char	*nbr;
+	int			is_negative;
+	long int	nbr;
+	char		*str_nbr;
 
+	is_negative = 0;
+	nbr = (long int)n;
+	handle_negative(&is_negative, &nbr);
 	if (n == 0)
-		return ("0\0");
-	if (n == -2147483648)
-		return ("-2147483648\0");
-	nbr = malloc(nbrlen(n) + 1);
-	i = 0;
-	handle_negative(&is_negative, &n);
-	while (n > 0)
 	{
-		temp = n % 10;
-		nbr[i++] = temp + '0';
-		n = n / 10;
+		str_nbr = ft_calloc(2, 1);
+		if (!str_nbr)
+			return ((void *)0);
+		ft_strlcpy(str_nbr, "0", 2);
+		return (str_nbr);
 	}
-	if (is_negative)
-		nbr[i++] = '-';
-	strreverse(nbr);
-	nbr[i] = '\0';
-	return (nbr);
+	str_nbr = ft_calloc(nbrlen(nbr, is_negative) + 1, 1);
+	if (!str_nbr)
+		return ((void *)0);
+	change_number(is_negative, nbr, str_nbr);
+	return (str_nbr);
 }
 
-int	nbrlen(int n)
+static int	nbrlen(long int nbr, int is_negative)
 {
 	int	len;
 
 	len = 0;
-	if (n < 0)
+	while (nbr > 0)
 	{
-		len ++;
-		n = n * -1;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
+		nbr /= 10;
 		len++;
 	}
-	return (len);
+	return (len + is_negative);
 }
 
-void	strreverse(char *str)
+static void	strreverse(char *str)
 {
 	int		i;
 	int		len;
@@ -69,6 +62,7 @@ void	strreverse(char *str)
 
 	len = ft_strlen(str);
 	i = -1;
+	temp = 0;
 	while (++i < len)
 	{
 		temp = str[i];
@@ -78,14 +72,34 @@ void	strreverse(char *str)
 	}
 }
 
-void	handle_negative(int *is_negative, int *n)
+static void	change_number(int is_negative, long int nbr, char *str_nbr)
 {
-	*is_negative = 0;
-	if (*n < 0)
+	int	temp;
+	int	i;
+
+	i = 0;
+	temp = 0;
+	while (nbr > 0)
 	{
-		*n = *n * -1;
+		temp = nbr % 10;
+		str_nbr[i++] = temp + '0';
+		nbr /= 10;
+	}
+	if (is_negative)
+		str_nbr[i++] = '-';
+	strreverse(str_nbr);
+	str_nbr[i] = '\0';
+}
+
+static void	handle_negative(int *is_negative, long int *nbr)
+{
+	if (*nbr < 0)
+	{
+		*nbr *= -1;
 		*is_negative = 1;
 	}
+	else
+		*is_negative = 0;
 }
 
 // #include <stdio.h>
@@ -93,5 +107,15 @@ void	handle_negative(int *is_negative, int *n)
 // int main ()
 // {
 // 	// printf("%d", nbrlen(13000));
-// 	printf("%s", ft_itoa(INT_MIN));
+// 	// printf("%s\n", ft_itoa(INT_MAX));
+// 	// printf("%lu\n", ft_strlen(ft_itoa(INT_MAX)));
+// 	// printf("%s\n", ft_itoa(INT_MIN));
+// 	// printf("%lu\n", ft_strlen(ft_itoa(INT_MIN)));
+// 	// printf("%lu\n", ft_strlen(ft_itoa(112)));
+// 	// printf("%lu\n", ft_strlen(ft_itoa(-112)));
+// 	// printf("%s\n", ft_itoa(-0));
+// 	char *s = ft_itoa(1);
+// 	printf("%d\n", s[0]);
+// 	printf("%d\n", s[1]);
+// 	printf("%d\n", s[2]);
 // }

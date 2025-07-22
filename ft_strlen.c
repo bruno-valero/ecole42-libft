@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/18 08:51:48 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:46:35 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (str[len])

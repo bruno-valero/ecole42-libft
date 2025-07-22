@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/21 16:37:28 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:45:48 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ char	**ft_split(char const *s, char c)
 char	**create_array(char const *s, int	*data, int data_len)
 {
 	char	**array;
-	int		i_ex;
-	int		i_in;
-	int		i_arr;
+	int		i_words;
+	int		i_src;
+	int		i_current_word;
 
 	array = malloc(((data_len / 2) * sizeof(char *)) + (1 * sizeof(char *)));
-	i_ex = -1;
-	while (++i_ex < (data_len / 2))
+	i_words = -1;
+	while (++i_words < (data_len / 2))
 	{
-		array[i_ex] = malloc(data[i_ex * 2 + 1] - data[i_ex * 2] + 2);
-		i_in = data[i_ex * 2];
-		i_arr = 0;
-		while (i_in <= data[i_ex * 2 + 1])
-			array[i_ex][i_arr++] = s[i_in++];
-		array[i_ex][i_arr] = '\0';
+		array[i_words] = malloc(data[i_words * 2 + 1] - data[i_words * 2] + 2);
+		i_src = data[i_words * 2];
+		i_current_word = 0;
+		while (i_src <= data[i_words * 2 + 1])
+			array[i_words][i_current_word++] = s[i_src++];
+		array[i_words][i_current_word] = '\0';
 	}
 	free(data);
-	array[i_ex] = (void *)0;
+	array[i_words] = (void *)0;
 	return (array);
 }
 
@@ -71,6 +71,6 @@ char	**create_array(char const *s, int	*data, int data_len)
 // 	// printf("%s\n\n", ft_split("Ola tudo bem? ", ' ')[3]);
 // 	// 
 // 	// printf("%d\n", ft_split("  tripouille  42  ", ' ')[2] == NULL);
-// 	printf("%d\n", ft_split("tripouille", 0)[1] == NULL);
+// 	// printf("%d\n", ft_split("tripouille", 0)[1] == NULL);
 // 	printf("%c\n", ft_split("tripouille", 0)[0][0]);
 // }
