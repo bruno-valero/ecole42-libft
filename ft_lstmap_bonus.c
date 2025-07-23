@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 09:41:16 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:07:55 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	**newlist;
+	t_list	*newlist;
 	t_list	*temp;
 
 	if (!lst || !f || !del)
 		return ((void *)0);
-	newlist = ft_calloc(1, sizeof(t_list));
+	newlist = ft_lstnew(f(lst->content));
 	if (!newlist)
-		return ((void *)0);
-	temp = newlist[0];
-	temp->content = f(lst->content);
+		return (NULL);
 	while (lst->next)
 	{
-		temp->next = ft_calloc(1, sizeof(t_list));
-		if (!temp->next)
+		temp = ft_lstnew(f(lst->next->content));
+		if (!temp)
 		{
-			ft_lstclear(newlist, del);
-			return ((void *)0);
+			ft_lstclear(&newlist, del);
+			return (NULL);
 		}
+		ft_lstadd_back(&newlist, temp);
 		lst = lst->next;
-		temp->next->content = f(lst->content);
-		temp = temp->next;
 	}
-	return (newlist[0]);
+	return (newlist);
 }
 
 // #include <stdio.h>

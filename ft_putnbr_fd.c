@@ -6,10 +6,9 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 16:36:58 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:10:19 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -34,9 +33,3 @@ void	ft_putnbr_fd(int n, int fd)
 	c = nbr % 10 + '0';
 	write(fd, &c, 1);
 }
-
-// #include <stdio.h>
-// int main ()
-// {
-// 	ft_putnbr_fd(12, 1);
-// }
