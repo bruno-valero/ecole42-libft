@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 08:29:56 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 09:41:16 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	lst_remove_one(t_list *lst, void (*del)(void *));
-
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*current;
-	t_list	*next;
+	t_list	**newlist;
+	t_list	*temp;
 
-	if (lst && del)
+	if (!lst || !f || !del)
+		return ((void *)0);
+	newlist = ft_calloc(1, sizeof(t_list));
+	if (!newlist)
+		return ((void *)0);
+	temp = newlist[0];
+	temp->content = f(lst->content);
+	while (lst->next)
 	{
-		current = lst[0];
-		next = current->next;
-		while (current && current->next)
+		temp->next = ft_calloc(1, sizeof(t_list));
+		if (!temp->next)
 		{
-			lst_remove_one(current, del);
-			current = next;
-			if (current && current->next)
-				next = current->next;
+			ft_lstclear(newlist, del);
+			return ((void *)0);
 		}
-		if (current)
-			lst_remove_one(current, del);
-		lst[0] = (void *)0;
+		lst = lst->next;
+		temp->next->content = f(lst->content);
+		temp = temp->next;
 	}
-}
-
-static void	lst_remove_one(t_list *lst, void (*del)(void *))
-{
-	lst->next = (void *)0;
-	ft_lstdelone(lst, del);
+	return (newlist[0]);
 }
 
 // #include <stdio.h>

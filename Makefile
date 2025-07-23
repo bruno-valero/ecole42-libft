@@ -44,7 +44,9 @@ BONUS_FNS = ft_lstnew_bonus.c \
 	ft_lstsize_bonus.c \
 	ft_lstlast_bonus.c \
 	ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c
+	ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c
 BONUS_OBJ := $(BONUS_FNS:%.c=%.o)
 
 # ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)

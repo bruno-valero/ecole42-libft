@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 10:08:33 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 08:55:25 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	total_bytes;
-	int	i;
-	int	len_dst;
-	int	len_src;
-
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	total_bytes = size - len_dst - 1;
-	if (size <= (size_t)len_dst || !size)
-		return (len_src + size);
-	i = -1;
-	while (src[++i] && len_dst + (size_t)i < size - 1)
-		dst[len_dst + i] = src[i];
-	dst[len_dst + i] = '\0';
-	return (len_dst + len_src);
+	while (lst->next)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+	if (lst)
+		f(lst->content);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <limits.h>
+// int main()
+// {
+// 	char src[] = "coucou";
+// 	char dest[10]; memset(dest, 'A', 10);
+// 	int teste = INT_MAX;
+// 	printf("%d\n", ft_strlcpy(dest, src, -1) == strlen(src));
+// 	// printf("%d\n", teste++);
+// 	// printf("%d\n", teste);
+// }
