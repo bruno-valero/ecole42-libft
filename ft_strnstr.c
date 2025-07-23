@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 15:52:52 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:35:41 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	big_i;
 	int		ltt_i;
 
+	if ((!big) && !len)
+		return (NULL);
 	if (!ft_strlen(little))
 		return ((char *)big);
 	big_i = -1;

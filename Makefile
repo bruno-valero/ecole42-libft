@@ -49,10 +49,6 @@ BONUS_FNS = ft_lstnew_bonus.c \
 	ft_lstmap_bonus.c
 BONUS_OBJ := $(BONUS_FNS:%.c=%.o)
 
-# ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
-# 	OBJ += $(BONUS_OBJ)
-# endif
-
 all: $(NAME)
 
 bonus: $(NAME)
@@ -73,3 +69,9 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+so: clean
+	$(CC) -fPIC $(CFLAGS) -c $(FUNCTIONS)
+	$(CC) -shared -o libft.so $(OBJ)
+
+.PHONY: all clean fclean re so

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 11:12:41 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:46:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	int		i;
 
+	if (!s || !f)
+		return (NULL);
 	str = (char *)ft_calloc(ft_strlen(s) + 1, 1);
+	if (!str)
+		return (NULL);
 	i = -1;
 	while (s[++i])
 		str[i] = f(i, s[i]);

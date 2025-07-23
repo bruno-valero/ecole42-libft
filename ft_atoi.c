@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 16:41:14 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:26:12 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *nptr)
 
 static void	clear_useless(const char **nptr)
 {
-	while ((**nptr == ' ' || **nptr > 1) && **nptr < 31)
+	while (**nptr == ' ' || (**nptr > 8 && **nptr < 14))
 		*nptr = *nptr + 1;
 }
 
