@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 19:14:26 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 15:28:53 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		len_str;
 	char	*sub;
 
+	if ((!s && !start))
+		return (NULL);
 	len_str = ft_strlen(s);
 	if (!s || (start > (unsigned int)len_str))
 	{

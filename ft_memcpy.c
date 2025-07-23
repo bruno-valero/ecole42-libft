@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/15 14:04:38 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 15:25:14 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*target;
 	unsigned char	*origin;
 
+	if (!dest && !src)
+		return (NULL);
 	target = (unsigned char *)dest;
 	origin = (unsigned char *)src;
 	i = -1;

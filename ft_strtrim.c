@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 16:43:03 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 13:06:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		data[2];
 	char	*str;
 
+	if (!s1 || !set)
+		return (NULL);
 	if (!ft_strlen(s1))
 		return (empty());
 	get_coordinates(s1, set, data);
