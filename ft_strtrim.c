@@ -6,16 +6,16 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 09:06:06 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:43:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		is_valid_char(char c, char const *set);
-void	get_coordinates(char const *s1, char const *set, int data[2]);
-int		is_valid_coords(int *coords);
-char	*empty(void);
+static int		is_valid_char(char c, char const *set);
+static void		get_coordinates(char const *s1, char const *set, int data[2]);
+static int		is_valid_coords(int *coords);
+static char		*empty(void);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-void	get_coordinates(char const *s1, char const *set, int data[2])
+static void	get_coordinates(char const *s1, char const *set, int data[2])
 {
 	int	i;
 
@@ -66,7 +66,7 @@ void	get_coordinates(char const *s1, char const *set, int data[2])
 	}
 }
 
-int	is_valid_char(char c, char const *set)
+static int	is_valid_char(char c, char const *set)
 {
 	int	i;
 
@@ -77,14 +77,14 @@ int	is_valid_char(char c, char const *set)
 	return (1);
 }
 
-int	is_valid_coords(int *coords)
+static int	is_valid_coords(int *coords)
 {
 	if (coords[0] < 0 || coords[1] < 0)
 		return (0);
 	return (1);
 }
 
-char	*empty(void)
+static char	*empty(void)
 {
 	char	*str;
 

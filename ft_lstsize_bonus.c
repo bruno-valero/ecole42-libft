@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 15:52:52 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:36:57 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	big_i;
-	int		ltt_i;
+	int		i;
 
-	if (!ft_strlen(little))
-		return ((char *)big);
-	big_i = -1;
-	while (big[++big_i] && big_i < len)
+	i = 0;
+	if (lst)
 	{
-		ltt_i = 0;
-		if (big[big_i] == little[0])
+		i++;
+		while (lst->next)
 		{
-			while ((little[ltt_i] && big[big_i + ltt_i] == little[ltt_i])
-				&& big_i + ltt_i < len)
-				ltt_i++;
+			i++;
+			lst = lst->next;
 		}
-		if (!little[ltt_i])
-			return ((char *)&big[big_i]);
+		return (i);
 	}
-	return ((void *)0);
+	return (i);
 }
 
 // #include <stdio.h>
-// #include <bsd/string.h>
+// #include <string.h>
+// #include <limits.h>
 // int main()
 // {
-// 	char haystack[30] = "aaabcabcd";
-// 	char needle[10] = "aabc";
-// 	printf("ft_strnstr: %s\n", ft_strnstr(haystack, needle, -1));
-// 	printf("strnstr: %s\n", strnstr(haystack, needle, -1));
+// 	char src[] = "coucou";
+// 	char dest[10]; memset(dest, 'A', 10);
+// 	int teste = INT_MAX;
+// 	printf("%d\n", ft_strlcpy(dest, src, -1) == strlen(src));
+// 	// printf("%d\n", teste++);
+// 	// printf("%d\n", teste);
 // }

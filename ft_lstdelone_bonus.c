@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 15:18:51 by brunofer         ###   ########.fr       */
+/*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
+/*   Updated: 2025/07/22 19:53:56 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	char	*str;
-	int		i;
-
-	str = (char *)ft_calloc(ft_strlen(s) + 1, 1);
-	i = -1;
-	while (s[++i])
-		str[i] = f(i, s[i]);
-	str[i] = '\0';
-	return (str);
+	if (lst && del)
+	{
+		del(lst->content);
+		free(lst);
+	}
 }
 
 // #include <stdio.h>
-// int main ()
+// #include <string.h>
+// #include <limits.h>
+// int main()
 // {
-// 	// printf("%d", nbrlen(13000));
-// 	printf("%s", ft_strmapi(-1587));
+// 	char src[] = "coucou";
+// 	char dest[10]; memset(dest, 'A', 10);
+// 	int teste = INT_MAX;
+// 	printf("%d\n", ft_strlcpy(dest, src, -1) == strlen(src));
+// 	// printf("%d\n", teste++);
+// 	// printf("%d\n", teste);
 // }

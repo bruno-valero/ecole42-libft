@@ -6,14 +6,14 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 12:45:48 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:40:43 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 // #include <stdio.h>
 
-char	**create_array(char const *s, int	*data, int data_len);
+static char	**create_array(char const *s, int	*data, int data_len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -38,7 +38,7 @@ char	**ft_split(char const *s, char c)
 	return (create_array(s, data, data_count));
 }
 
-char	**create_array(char const *s, int	*data, int data_len)
+static char	**create_array(char const *s, int	*data, int data_len)
 {
 	char	**array;
 	int		i_words;

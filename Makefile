@@ -28,17 +28,41 @@ FUNCTIONS = ft_isalpha.c \
 			ft_tolower.c \
 			ft_calloc.c \
 			ft_strtrim.c \
-			ft_split.c
+			ft_split.c \
+			ft_strmapi.c \
+			ft_striteri.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c
 
 OBJ := $(FUNCTIONS:%.c=%.o)
 
+BONUS_FNS = ft_lstnew_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstadd_back_bonus.c \
+	ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c
+BONUS_OBJ := $(BONUS_FNS:%.c=%.o)
+
+# ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
+# 	OBJ += $(BONUS_OBJ)
+# endif
+
 all: $(NAME)
+
+bonus: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus:
+		$(MAKE) OBJ="$(OBJ) $(BONUS_OBJ)" all
 
 clean:
 	rm -rf *.o

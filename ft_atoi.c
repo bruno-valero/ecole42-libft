@@ -6,14 +6,14 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/21 17:10:39 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:41:14 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	clear_useless(const char **nptr);
-void	handle_signs(const char **nptr, int *sign);
+static void	clear_useless(const char **nptr);
+static void	handle_signs(const char **nptr, int *sign);
 
 int	ft_atoi(const char *nptr)
 {
@@ -30,13 +30,13 @@ int	ft_atoi(const char *nptr)
 	return (result * sign);
 }
 
-void	clear_useless(const char **nptr)
+static void	clear_useless(const char **nptr)
 {
 	while ((**nptr == ' ' || **nptr > 1) && **nptr < 31)
 		*nptr = *nptr + 1;
 }
 
-void	handle_signs(const char **nptr, int *sign)
+static void	handle_signs(const char **nptr, int *sign)
 {
 	*sign = 1;
 	if (*nptr[0] == '-' || *nptr[0] == '+')

@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/22 15:18:51 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:36:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	int		i;
+	char		c;
+	long int	nbr;
 
-	str = (char *)ft_calloc(ft_strlen(s) + 1, 1);
-	i = -1;
-	while (s[++i])
-		str[i] = f(i, s[i]);
-	str[i] = '\0';
-	return (str);
+	nbr = (long int)n;
+	if (nbr == 0)
+	{
+		write(fd, "0\0", 2);
+		return ;
+	}
+	if (nbr < 0)
+	{
+		write(fd, "-", 1);
+		nbr *= -1;
+	}
+	if (nbr > 9)
+		ft_putnbr_fd(nbr / 10, fd);
+	c = nbr % 10 + '0';
+	write(fd, &c, 1);
 }
 
 // #include <stdio.h>
 // int main ()
 // {
-// 	// printf("%d", nbrlen(13000));
-// 	printf("%s", ft_strmapi(-1587));
+// 	ft_putnbr_fd(12, 1);
 // }

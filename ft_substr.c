@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/21 19:20:33 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:14:26 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	len_str = ft_strlen(s);
 	if (!s || (start > (unsigned int)len_str))
 	{
-		sub = (char *)malloc(1);
-		sub[0] = '\0';
+		sub = (char *)ft_calloc(1, 1);
 		return (sub);
 	}
 	if (len < (len_str - start))
 		size = len;
 	else
 		size = len_str - start;
-	sub = (char *)malloc(size + 1);
+	sub = (char *)ft_calloc(size + 1, 1);
 	if (!sub)
 		return (((void *)0));
 	i = 0;
 	while ((i < size) && s[start])
 		sub[i++] = s[start++];
-	sub[i] = '\0';
 	return (sub);
 }
 
