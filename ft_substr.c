@@ -6,13 +6,11 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 15:28:53 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:17:33 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	get_smaller(int n1, int n2);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 12:50:33 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/24 13:36:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 static char	**create_array(char const *s, int	*data, int data_len);
 static void	free_split(char **str, int end);
+static int	write_words(char const *s,
+				int *data, int data_len, char **splitted);
 
 char	**ft_split(char const *s, char c)
 {
@@ -47,32 +49,16 @@ char	**ft_split(char const *s, char c)
 
 static char	**create_array(char const *s, int	*data, int data_len)
 {
-	char	**array;
-	int		i_words;
-	int		i_src;
-	int		i_current_word;
+	char	**splitted;
 
-	array = (char **)ft_calloc((data_len / 2) + 1, sizeof(char *));
-	if (!array)
+	splitted = (char **)ft_calloc((data_len / 2) + 1, sizeof(char *));
+	if (!splitted)
 		return (NULL);
-	i_words = -1;
-	while (++i_words < (data_len / 2))
-	{
-		array[i_words] = malloc(data[i_words * 2 + 1] - data[i_words * 2] + 2);
-		if (!array[i_words])
-		{
-			free_split(array, i_words - 1);
-			return (NULL);
-		}
-		i_src = data[i_words * 2];
-		i_current_word = 0;
-		while (i_src <= data[i_words * 2 + 1])
-			array[i_words][i_current_word++] = s[i_src++];
-		array[i_words][i_current_word] = '\0';
-	}
+	if (!write_words(s, data, data_len, splitted))
+		return (NULL);
 	free(data);
-	array[i_words] = (void *)0;
-	return (array);
+	splitted[(data_len / 2)] = (void *)0;
+	return (splitted);
 }
 
 static void	free_split(char **str, int end)
@@ -84,6 +70,32 @@ static void	free_split(char **str, int end)
 		end--;
 	}
 	free(str);
+}
+
+static int	write_words(char const *s, int *data, int data_len, char **splitted)
+{
+	int	i_words;
+	int	i_src;
+	int	i_current_word;
+
+	i_words = -1;
+	while (++i_words < (data_len / 2))
+	{
+		splitted[i_words] = malloc(
+				data[i_words * 2 + 1] - data[i_words * 2] + 2
+				);
+		if (!splitted[i_words])
+		{
+			free_split(splitted, i_words - 1);
+			return (0);
+		}
+		i_src = data[i_words * 2];
+		i_current_word = 0;
+		while (i_src <= data[i_words * 2 + 1])
+			splitted[i_words][i_current_word++] = s[i_src++];
+		splitted[i_words][i_current_word] = '\0';
+	}
+	return (1);
 }
 
 // #include <stdio.h>
