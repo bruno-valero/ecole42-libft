@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 14:50:53 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:46:26 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[i++] = s[start++];
 	return (sub);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	char *s = ft_substr("tripouille", 0, 42000);
-// 	s = ft_substr("tripouille", 100, 1);
-// 	// printf("%s\n", ft_substr("tripouille", 0, 42000));
-// 	printf("%s\n", s);
-// 	// printf("%s\n", ft_substr("tripouille", 1, 1));
-// }

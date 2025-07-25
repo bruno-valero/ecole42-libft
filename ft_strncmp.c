@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 13:33:33 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:46:07 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-// 	printf("%d\n", strncmp("1234", "1235", 3) == 0);
-// 	printf("%d\n", ft_strncmp("1234", "1235", 3) == 0);
-// }

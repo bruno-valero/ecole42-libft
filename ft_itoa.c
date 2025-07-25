@@ -101,21 +101,3 @@ static void	handle_negative(int *is_negative, long int *nbr)
 	else
 		*is_negative = 0;
 }
-
-// #include <stdio.h>
-// #include <limits.h>
-// int main ()
-// {
-// 	// printf("%d", nbrlen(13000));
-// 	// printf("%s\n", ft_itoa(INT_MAX));
-// 	// printf("%lu\n", ft_strlen(ft_itoa(INT_MAX)));
-// 	// printf("%s\n", ft_itoa(INT_MIN));
-// 	// printf("%lu\n", ft_strlen(ft_itoa(INT_MIN)));
-// 	// printf("%lu\n", ft_strlen(ft_itoa(112)));
-// 	// printf("%lu\n", ft_strlen(ft_itoa(-112)));
-// 	// printf("%s\n", ft_itoa(-0));
-// 	char *s = ft_itoa(1);
-// 	printf("%d\n", s[0]);
-// 	printf("%d\n", s[1]);
-// 	printf("%d\n", s[2]);
-// }

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 13:06:36 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:46:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,3 @@ static char	*empty(void)
 	str[0] = '\0';
 	return (str);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	printf("strtrim:%s", ft_strtrim("   xxx   xxx", " x"));
-// 	// printf("strtrim:%s", ft_strtrim("abcdba", "acb"));
-// }

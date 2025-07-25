@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 13:13:15 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:45:52 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-// 	char *s = ft_strjoin("tripouille", "42");
-// 	printf("%s\n", s);
-// 	printf("%d\n", !strcmp(s, "tripouille42"));
-// }

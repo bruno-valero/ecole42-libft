@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 11:35:41 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:46:11 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return ((void *)0);
 }
-
-// #include <stdio.h>
-// #include <bsd/string.h>
-// int main()
-// {
-// 	char haystack[30] = "aaabcabcd";
-// 	char needle[10] = "aabc";
-// 	printf("ft_strnstr: %s\n", ft_strnstr(haystack, needle, -1));
-// 	printf("strnstr: %s\n", strnstr(haystack, needle, -1));
-// }

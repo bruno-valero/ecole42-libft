@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 15:08:50 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:44:15 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	printf("%p\n", ft_calloc(0, -5));
-// 	printf("%p\n", calloc(0, -5));
-// }

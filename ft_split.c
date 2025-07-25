@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 14:55:04 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:45:41 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,3 @@ static int	write_words(char const *s, int *data, int data_len, char **splitted)
 	}
 	return (1);
 }
-
-// #include <stdio.h>
-// int main ()
-//
-// 	// ft_split("Ola tudo bem? ", ' ');
-// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[0]);
-// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[1]);
-// 	// printf("%s\n", ft_split("Ola tudo bem? ", ' ')[2]);
-// 	// printf("%s\n\n", ft_split("Ola tudo bem? ", ' ')[3]);
-// 	//
-// 	// printf("%d\n", ft_split("  tripouille  42  ", ' ')[2] == NULL);
-// 	// printf("%d\n", ft_split("tripouille", 0)[1] == NULL);
-// 	printf("%c\n", ft_split("tripouille", 0)[0][0]);
-// }
