@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 08:33:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/23 11:10:19 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:06:32 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putnbr_fd(int n, int fd)
 	nbr = (long int)n;
 	if (nbr == 0)
 	{
-		write(fd, "0\0", 2);
+		write(fd, "0", 1);
 		return ;
 	}
 	if (nbr < 0)

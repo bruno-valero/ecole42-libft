@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/24 13:36:09 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:55:04 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,7 @@ static char	**create_array(char const *s, int	*data, int data_len)
 static void	free_split(char **str, int end)
 {
 	while (end >= 0)
-	{
-		ft_bzero(str[end], ft_strlen(str[end]));
-		free(str[end]);
-		end--;
-	}
+		free(str[end--]);
 	free(str);
 }
 
