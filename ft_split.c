@@ -6,12 +6,11 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:41 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:28:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
 
 static char	**create_array(char const *s, int	*data, int data_len);
 static void	free_split(char **str, int end);

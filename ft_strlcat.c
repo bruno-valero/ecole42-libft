@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:55 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:28:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	total_bytes;
 	int	i;
 	int	len_dst;
 	int	len_src;
@@ -23,7 +22,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (0);
 	len_dst = ft_strlen(dst);
 	len_src = ft_strlen(src);
-	total_bytes = size - len_dst - 1;
 	if (size <= (size_t)len_dst || !size)
 		return (len_src + size);
 	i = -1;

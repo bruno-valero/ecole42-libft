@@ -60,7 +60,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
-		$(MAKE) OBJ="$(OBJ) $(BONUS_OBJ)" all
+		@$(MAKE) OBJ="$(OBJ) $(BONUS_OBJ)" all
 
 clean:
 	rm -rf *.o

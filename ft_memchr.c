@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:23 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/26 14:29:15 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (++i < n)
 	{
 		if ((unsigned char)ptr[i] == target_char)
-			return ((void *)&s[i]);
+			return (&ptr[i]);
 	}
-	return ((void *)0);
+	return (NULL);
 }
