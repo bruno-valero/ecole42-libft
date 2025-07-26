@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 17:53:49 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/26 10:04:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	if (nmemb && size && nmemb != nmemb * size / size)
+	if (!nmemb || !size)
+	{
+		ptr = malloc(1);
+		if (!ptr)
+			return (NULL);
+		return (ptr);
+	}
+	if (nmemb != nmemb * size / size)
 		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (!ptr)
