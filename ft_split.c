@@ -6,89 +6,89 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/26 14:28:09 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:43:15 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**create_array(char const *s, int	*data, int data_len);
-static void	free_split(char **str, int end);
-static int	write_words(char const *s,
-				int *data, int data_len, char **splitted);
+static char	**run_split(char const *s, int	*coord_arr, int coord_arr_len);
+static void	delete_words(char **str, int end);
+static int	split_with_coords(char const *src,
+				int *coord_arr, int coord_arr_len, char **words);
 
 char	**ft_split(char const *s, char c)
 {
-	int	*data;
-	int	data_count;
+	int	*coord_arr;
+	int	coord_arr_len;
 	int	i;
 
 	if (!s)
 		return (NULL);
-	data = (int *)ft_calloc(ft_strlen((char *)s), sizeof(int));
-	if (!data)
+	coord_arr = (int *)ft_calloc(ft_strlen((char *)s), sizeof(int));
+	if (!coord_arr)
 		return (NULL);
-	data_count = 0;
+	coord_arr_len = 0;
 	i = -1;
 	while (s[++i])
 	{
-		if ((i == 0) && (s[i] != c))
-			data[data_count++] = i;
-		else if ((i > 0) && (s[i] != c) && (s[i - 1] == c))
-			data[data_count++] = i;
+		if (((i == 0) && (s[i] != c))
+			|| ((i > 0) && (s[i] != c) && (s[i - 1] == c)))
+			coord_arr[coord_arr_len++] = i;
 		else if ((i > 0) && (s[i] == c && s[i - 1] != c))
-			data[data_count++] = i - 1;
+			coord_arr[coord_arr_len++] = i - 1;
 		else if ((s[i] != c && s[i + 1] == '\0'))
-			data[data_count++] = i;
+			coord_arr[coord_arr_len++] = i;
 	}
-	if (data_count % 2 != 0)
-			data[data_count++] = i - 1;
-	return (create_array(s, data, data_count));
+	if (coord_arr_len % 2 != 0)
+			coord_arr[coord_arr_len++] = i - 1;
+	return (run_split(s, coord_arr, coord_arr_len));
 }
 
-static char	**create_array(char const *s, int	*data, int data_len)
+static char	**run_split(char const *s, int	*coord_arr, int coord_arr_len)
 {
-	char	**splitted;
+	char	**words;
 
-	splitted = (char **)ft_calloc((data_len / 2) + 1, sizeof(char *));
-	if (!splitted)
+	words = (char **)ft_calloc((coord_arr_len / 2) + 1, sizeof(char *));
+	if (!words)
 		return (NULL);
-	if (!write_words(s, data, data_len, splitted))
+	if (!split_with_coords(s, coord_arr, coord_arr_len, words))
 		return (NULL);
-	free(data);
-	splitted[(data_len / 2)] = (void *)0;
-	return (splitted);
+	free(coord_arr);
+	words[(coord_arr_len / 2)] = (void *)0;
+	return (words);
 }
 
-static void	free_split(char **str, int end)
+static void	delete_words(char **str, int end)
 {
 	while (end >= 0)
 		free(str[end--]);
 	free(str);
 }
 
-static int	write_words(char const *s, int *data, int data_len, char **splitted)
+static int	split_with_coords(char const *src,
+		int *coord_arr, int coord_arr_len, char **words)
 {
 	int	i_words;
 	int	i_src;
 	int	i_current_word;
 
 	i_words = -1;
-	while (++i_words < (data_len / 2))
+	while (++i_words < (coord_arr_len / 2))
 	{
-		splitted[i_words] = malloc(
-				data[i_words * 2 + 1] - data[i_words * 2] + 2
+		words[i_words] = malloc(
+				coord_arr[i_words * 2 + 1] - coord_arr[i_words * 2] + 2
 				);
-		if (!splitted[i_words])
+		if (!words[i_words])
 		{
-			free_split(splitted, i_words - 1);
+			delete_words(words, i_words - 1);
 			return (0);
 		}
-		i_src = data[i_words * 2];
+		i_src = coord_arr[i_words * 2];
 		i_current_word = 0;
-		while (i_src <= data[i_words * 2 + 1])
-			splitted[i_words][i_current_word++] = s[i_src++];
-		splitted[i_words][i_current_word] = '\0';
+		while (i_src <= coord_arr[i_words * 2 + 1])
+			words[i_words][i_current_word++] = src[i_src++];
+		words[i_words][i_current_word] = '\0';
 	}
 	return (1);
 }

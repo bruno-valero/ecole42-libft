@@ -6,43 +6,45 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 17:51:36 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:49:46 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	clear_useless(const char **nptr);
-static void	handle_signs(const char **nptr, int *sign);
+static void	clear_spaces(char **nbstr);
+static void	handle_positive_or_negative_sign(char **nbstr, int *sign);
 
 int	ft_atoi(const char *nptr)
 {
-	int	result;
-	int	i;
-	int	sign;
+	int		result;
+	int		i;
+	int		sign;
+	char	*nbstr;
 
-	clear_useless(&nptr);
-	handle_signs(&nptr, &sign);
+	nbstr = (char *)nptr;
+	clear_spaces(&nbstr);
+	handle_positive_or_negative_sign(&nbstr, &sign);
 	result = 0;
 	i = -1;
-	while (ft_isdigit(nptr[++i]))
-		result = result * 10 + (nptr[i] - '0');
+	while (ft_isdigit(nbstr[++i]))
+		result = result * 10 + (nbstr[i] - '0');
 	return (result * sign);
 }
 
-static void	clear_useless(const char **nptr)
+static void	clear_spaces(char **nbstr)
 {
-	while (**nptr == ' ' || (**nptr > 8 && **nptr < 14))
-		*nptr = *nptr + 1;
+	while (**nbstr == ' ' || (**nbstr > 8 && **nbstr < 14))
+		*nbstr = *nbstr + 1;
 }
 
-static void	handle_signs(const char **nptr, int *sign)
+static void	handle_positive_or_negative_sign(char **nbstr, int *sign)
 {
 	*sign = 1;
-	if (*nptr[0] == '-' || *nptr[0] == '+')
+	if (*nbstr[0] == '-' || *nbstr[0] == '+')
 	{
-		if (*nptr[0] == '-')
+		if (*nbstr[0] == '-')
 			*sign = -1;
-		*nptr = *nptr + 1;
+		*nbstr = *nbstr + 1;
 	}
 }

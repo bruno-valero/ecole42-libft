@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:30 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:41:19 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			if (i == 0)
 				break ;
 		}
+		return (target);
 	}
-	else
-		while (++i < n)
-			target[i] = origin[i];
-	return (target);
+	return (ft_memcpy(target, origin, n));
 }

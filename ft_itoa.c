@@ -13,31 +13,26 @@
 #include "libft.h"
 
 static int		nbrlen(long int nbr, int is_negative);
-static void		strreverse(char *str);
-static void		change_number(int is_negative, long int nbr, char *str_nbr);
+static void		number_to_string(long int nbr, int nbr_len,
+					int is_negative, char *str_nbr);
 static void		handle_negative(int *is_negative, long int *nbr);
 
 char	*ft_itoa(int n)
 {
-	int			is_negative;
 	long int	nbr;
+	int			nbr_len;
+	int			is_negative;
 	char		*str_nbr;
 
-	is_negative = 0;
 	nbr = (long int)n;
 	handle_negative(&is_negative, &nbr);
-	if (n == 0)
-	{
-		str_nbr = ft_calloc(2, 1);
-		if (!str_nbr)
-			return ((void *)0);
-		ft_strlcpy(str_nbr, "0", 2);
-		return (str_nbr);
-	}
-	str_nbr = ft_calloc(nbrlen(nbr, is_negative) + 1, 1);
+	nbr_len = nbrlen(nbr, is_negative);
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	str_nbr = ft_calloc(nbr_len + 1, 1);
 	if (!str_nbr)
-		return ((void *)0);
-	change_number(is_negative, nbr, str_nbr);
+		return (NULL);
+	number_to_string(nbr, nbr_len, is_negative, str_nbr);
 	return (str_nbr);
 }
 
@@ -54,41 +49,20 @@ static int	nbrlen(long int nbr, int is_negative)
 	return (len + is_negative);
 }
 
-static void	strreverse(char *str)
+static void	number_to_string(long int nbr, int nbr_len,
+		int is_negative, char *str_nbr)
 {
-	int		i;
-	int		len;
-	char	temp;
+	int	last_digit;
 
-	len = ft_strlen(str);
-	i = -1;
-	temp = 0;
-	while (++i < len)
+	last_digit = 0;
+	if (is_negative)
+		str_nbr[0] = '-';
+	while (nbr_len-- - is_negative)
 	{
-		temp = str[i];
-		str[i] = str[len - 1];
-		str[len - 1] = temp;
-		len--;
-	}
-}
-
-static void	change_number(int is_negative, long int nbr, char *str_nbr)
-{
-	int	temp;
-	int	i;
-
-	i = 0;
-	temp = 0;
-	while (nbr > 0)
-	{
-		temp = nbr % 10;
-		str_nbr[i++] = temp + '0';
+		last_digit = nbr % 10;
+		str_nbr[nbr_len] = last_digit + '0';
 		nbr /= 10;
 	}
-	if (is_negative)
-		str_nbr[i++] = '-';
-	strreverse(str_nbr);
-	str_nbr[i] = '\0';
 }
 
 static void	handle_negative(int *is_negative, long int *nbr)

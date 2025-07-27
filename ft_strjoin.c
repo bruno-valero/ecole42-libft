@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:52 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:45:27 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
 	int		i;
+	char	*str;
 	int		len1;
 	int		len2;
 
@@ -23,17 +23,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len1 = ft_strlen((char *)s1);
 	len2 = ft_strlen((char *)s2);
-	str = ft_calloc(len1 + len2 + 1, 1);
+	str = ft_calloc((len1 + len2) + 1, 1);
 	if (!str)
 		return (NULL);
 	i = -1;
-	while (++i < len1 + len2)
+	while (++i < (len1 + len2))
 	{
-		if (s1[i] && i <= len1)
+		if (s1[i] && (i <= len1))
 			str[i] = s1[i];
 		else
 			str[i] = s2[i - len1];
 	}
-	str[i] = '\0';
 	return (str);
 }

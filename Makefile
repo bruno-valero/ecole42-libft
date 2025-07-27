@@ -70,8 +70,4 @@ fclean: clean
 
 re: fclean all
 
-so: clean
-	$(CC) -fPIC $(CFLAGS) -c $(FUNCTIONS)
-	$(CC) -shared -o libft.so $(OBJ)
-
 .PHONY: all clean fclean re so
