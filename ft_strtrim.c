@@ -6,66 +6,63 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:46:22 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:12:42 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int		is_valid_char(char c, char const *set);
-static void		get_coordinates(char const *s1, char const *set, int data[2]);
+static int		*fill_coords(char const *s1, char const *set, int *coords);
 static int		is_valid_coords(int *coords);
-static char		*empty(void);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
-	int		data[2];
 	char	*str;
+	int		coords[2];
 
 	if (!s1 || !set)
 		return (NULL);
-	if (!ft_strlen(s1))
-		return (empty());
-	get_coordinates(s1, set, data);
-	if (!is_valid_coords(data))
-		return (empty());
-	str = malloc(data[1] - data[0] + 2);
+	if (!is_valid_coords(fill_coords(s1, set, coords)))
+		return (ft_strdup(""));
+	str = malloc(coords[1] - coords[0] + 2);
 	if (!str)
-		return ((void *)0);
+		return (NULL);
 	i = 0;
-	while (data[0] <= data[1])
-		str[i++] = s1[data[0]++];
+	while (coords[0] <= coords[1])
+		str[i++] = s1[coords[0]++];
 	str[i] = '\0';
 	return (str);
 }
 
-static void	get_coordinates(char const *s1, char const *set, int data[2])
+static int	*fill_coords(char const *s1, char const *set, int *coords)
 {
 	int	i;
 
-	data[0] = -1;
-	data[1] = -1;
+	coords[0] = -1;
+	coords[1] = -1;
 	i = -1;
 	while (s1[++i])
 	{
 		if (!i && is_valid_char(s1[i], set))
-			data[0] = i;
+			coords[0] = i;
 		if (!is_valid_char(s1[i - 1], set) && is_valid_char(s1[i], set))
-			data[0] = i;
-		if (data[0] >= 0)
+			coords[0] = i;
+		if (coords[0] >= 0)
 			break ;
 	}
 	i = ft_strlen(s1);
 	while (s1[--i])
 	{
 		if (is_valid_char(s1[i], set) && !s1[i + 1])
-			data[1] = i;
+			coords[1] = i;
 		if (is_valid_char(s1[i], set) && !is_valid_char(s1[i + 1], set))
-			data[1] = i;
-		if (data[1] >= 0)
+			coords[1] = i;
+		if (coords[1] >= 0)
 			break ;
 	}
+	return (coords);
 }
 
 static int	is_valid_char(char c, char const *set)
@@ -84,13 +81,4 @@ static int	is_valid_coords(int *coords)
 	if (coords[0] < 0 || coords[1] < 0)
 		return (0);
 	return (1);
-}
-
-static char	*empty(void)
-{
-	char	*str;
-
-	str = malloc(1);
-	str[0] = '\0';
-	return (str);
 }

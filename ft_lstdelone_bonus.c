@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:00 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:30:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (lst && del)
-	{
-		del(lst->content);
-		free(lst);
-	}
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

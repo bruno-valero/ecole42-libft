@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 07:02:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/25 15:45:21 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:28:06 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,8 @@ int	ft_lstsize(t_list *lst)
 {
 	int		i;
 
-	i = 0;
-	if (lst)
-	{
-		i++;
-		while (lst->next)
-		{
-			i++;
-			lst = lst->next;
-		}
-		return (i);
-	}
+	i = -1;
+	while (i++, lst)
+		lst = lst->next;
 	return (i);
 }
