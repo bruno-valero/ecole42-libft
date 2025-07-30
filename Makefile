@@ -52,15 +52,13 @@ BONUS_OBJ := $(BONUS_FNS:%.c=%.o)
 all: $(NAME)
 
 bonus: $(NAME)
+	@$(MAKE) OBJ="$(OBJ) $(BONUS_OBJ)" all
 
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-bonus:
-		@$(MAKE) OBJ="$(OBJ) $(BONUS_OBJ)" all
 
 clean:
 	rm -rf *.o

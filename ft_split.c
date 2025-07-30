@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/07/27 11:43:15 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/07/30 09:26:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	coord_arr = (int *)ft_calloc(ft_strlen((char *)s), sizeof(int));
+	coord_arr = (int *)ft_calloc(ft_strlen((char *)s) + 1, sizeof(int));
 	if (!coord_arr)
 		return (NULL);
 	coord_arr_len = 0;
